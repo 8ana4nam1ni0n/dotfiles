@@ -1,0 +1,27 @@
+# !/bin/env zsh
+
+CURRENT_DIR=$( cd "$( dirname -- ${(%):-%x} )" && pwd )
+ZSHRC="$CURRENT_DIR/.zshrc"
+
+if [ -L $ZSHRC ]
+then
+    CURRENT_DIR=$( dirname "$( readlink $ZSHRC )" )
+fi
+
+# Load Antigen
+source $CURRENT_DIR/antigen.zsh
+
+# Load Antigen Configurations
+antigen init $CURRENT_DIR/antigenrc
+
+# Load Custom System Configuration
+SHARED_CONFIG=$CURRENT_DIR/../shared
+
+if [ -d $SHARED_CONFIG ]
+then
+    source $SHARED_CONFIG/init
+fi
+
+# Load zsh aliases
+ZSH_ALIAS="$CURRENT_DIR/alias.zsh"
+[ -f $ZSH_ALIAS ] && source $ZSH_ALIAS

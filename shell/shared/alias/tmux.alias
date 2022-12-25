@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+alias tmux-config='cd $TOOL_PATH/dotfiles/tmux && nvim && cd -'

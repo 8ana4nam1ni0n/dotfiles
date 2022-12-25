@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
+############### BASHIT_CONFIG ###############
+
+# Path to the bash it configuration
+export BASH_IT="/home/sharp/.bash_it"
+
+# Lock and Load a custom theme file.
+# Leave empty to disable theming.
+# location /.bash_it/themes/
+export BASH_IT_THEME='barbuk'
+
+# Don't check mail when opening terminal.
+unset MAILCHECK
+
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
+
+# Set this to false to turn off version control status checking
+# within the prompt for all themes
+export SCM_CHECK=true
+
+# Load Bash It
+source "$BASH_IT"/bash_it.sh
+
+############### CUSTOM_CONFIG ###############
+# get current directory
+CURRENT_DIR=$( cd "$( dirname ${BASH_SOURCE[0]} )" && pwd)
+
+# Check if bashrc is a symlink to my custom one
+BSHRC="$CURRENT_DIR/.bashrc"
+if [ -L $BSHRC ]; then
+    CURRENT_DIR=$CURRENT_DIR/$( dirname "$( readlink $BSHRC )" )
+fi
+
+# load shared configuration
+SHARED_DIR="$CURRENT_DIR/../shared"
+if [ -d $SHARED_DIR ]; then 
+    source $SHARED_DIR/init
+fi

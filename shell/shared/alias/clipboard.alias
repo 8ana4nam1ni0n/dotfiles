@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Copy to clipboard
+alias xcp='xclip -sel clip'
+# Paste contents on clipboard
+alias xps='xclip -sel clip -o'

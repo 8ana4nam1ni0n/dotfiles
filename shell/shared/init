@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DIR=$( cd "$( dirname ${BASH_SOURCE[0]:-${(%):-%x}} )" && pwd )
+
+ALIAS_DIR="$DIR/alias"
+ENV_FILE="$DIR/env"
+
+if [ -d $ALIAS_DIR ]; then
+     for f in `ls $ALIAS_DIR`;
+     do
+         . $ALIAS_DIR/$f
+     done
+fi
+
+[ -f $ENV_FILE ] && . $ENV_FILE
+

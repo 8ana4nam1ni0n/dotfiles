@@ -1,0 +1,37 @@
+#!/bin/sh
+
+export XDG_CONFIG_HOME=$HOME/.config
+export TOOL_PATH=$HOME/Tools
+
+# Node Version Manager (NVM)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Python Version Manager (PyENV)
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Load pyenv-virtualenv 
+eval "$(pyenv virtualenv-init -)"
+
+# go programming language
+export PATH=$HOME/go/bin:$PATH
+# rust programming language
+. "$HOME/.cargo/env"
+
+# fzf 
+# grabs fzf file for current running shell
+FZF_SHELL_CONFIG=~/.fzf.$( ps --no-header -p $$ | awk '{print $4}')
+
+# source fzf
+[ -f $FZF_SHELL_CONFIG ] && . $FZF_SHELL_CONFIG || echo "NO FZF CONFIG FOUND"
+
+# define how fzf looks
+export FZF_DEFAULT_COMMAND='fd --type f --hidden'
+export FZF_DEFAULT_OPTS='--layout=default --no-height'
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_CTRL_T_OPTS='--layout=default'
+export FZF_ALT_C_COMMAND='fd --type d --hidden'
+export FZF_ALT_C_OPTS='--layout=default'

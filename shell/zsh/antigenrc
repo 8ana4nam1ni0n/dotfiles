@@ -1,0 +1,13 @@
+#!/bin/env zsh
+
+# Load bundles from external repos
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Select theme
+THEME=denysdovhan/spaceship-prompt
+[[ `antigen list | grep $THEME | wc -l` -gt 0 ]] || antigen theme $THEME 
+
+# Tell Antigen that you're done
+antigen apply
