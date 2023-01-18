@@ -6,8 +6,15 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    -- tokyo night theme
-    use 'folke/tokyonight.nvim'
+    -- colorscheme
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            require("rose-pine").setup()
+            vim.cmd('colorscheme rose-pine')
+        end
+    })
     -- Telescope
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
@@ -17,6 +24,9 @@ return require('packer').startup(function(use)
     use ('nvim-telescope/telescope-fzf-native.nvim', { run = 'make' })
     -- Devicons
     use 'kyazdani42/nvim-web-devicons'
+    -- Helm
+    use 'towolf/vim-helm'
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
