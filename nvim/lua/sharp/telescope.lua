@@ -2,12 +2,13 @@ local action_state = require('telescope.actions.state')
 
 require('telescope').setup{
     defaults = {
+        borderchars = { "-", "|", "-", "|", "+","+","+","+" },
         prompt_prefix = "> ",
         color_devicons = true,
         mappings = {
            i = {
                    ["<C-a>"] = function() print(vim.inspect(action_state.get_selected_entry())) end
-           } 
+           }
         }
     }
 }
