@@ -25,3 +25,8 @@ fi
 # Load zsh aliases
 ZSH_ALIAS="$CURRENT_DIR/alias.zsh"
 [ -f $ZSH_ALIAS ] && source $ZSH_ALIAS
+
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
