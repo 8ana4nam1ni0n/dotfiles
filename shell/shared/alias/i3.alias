@@ -1,4 +1,0 @@
-#!/bin/sh
-
-
-alias i3-config='cd $TOOL_PATH/dotfiles/i3 && nvim config && cd -'

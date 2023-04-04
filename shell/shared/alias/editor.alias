@@ -1,22 +1,5 @@
 #!/bin/sh
 
-## Useful Functions
-update-neovim() {
-   local nvim_dir=$TOOL_PATH/neovim 
-   [ -d $nvim_dir ] && $(cd $nvim_dir && git pull)
-}
-
-install-neovim() {
-    local current_dir=$(pwd)
-    cd $TOOL_PATH/neovim
-    make CMAKE_BUILD_TYPE=RelWithDebInfo
-    make install
-    cd "$current_dir"
-}
-
 # Aliases
 alias vim='nvim'
 alias vim-pack-update='nvim --headless -c "autocmd User PackerComplete quitall" -c PackerSync'
-alias update-nvim='update-neovim'
-alias install-nvim='sudo zsh -c "install-neovim"'
-alias nvim-config='cd $TOOL_PATH/dotfiles/nvim && nvim && cd -'

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+go-to-dotfiles() {
+    local currdir=$( cd "$( dirname ${BASH_SOURCE[0]:-${(%):-%x}} )" && pwd )
+    local dotpath=`cd $currdir/../../ && pwd`
+    local dotfile="${1}"
+
+    cd $dotpath && nvim $dotfile && cd -
+}
