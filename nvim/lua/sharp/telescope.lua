@@ -4,11 +4,6 @@ require('telescope').setup{
     defaults = {
         prompt_prefix = "> ",
         color_devicons = true,
-        mappings = {
-           i = {
-                   ["<C-a>"] = function() print(vim.inspect(action_state.get_selected_entry())) end
-           } 
-        }
     }
 }
 

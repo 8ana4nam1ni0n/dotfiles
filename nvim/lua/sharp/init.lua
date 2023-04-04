@@ -1,6 +1,11 @@
 require("sharp.packer")
 require("sharp.set")
 require("sharp.remap")
+require("sharp.telescope")
+require("sharp.lualine")
+require("sharp.indent_blankline")
+require("sharp.harpoon")
+require("sharp.comment")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
