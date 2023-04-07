@@ -190,6 +190,6 @@ bar {
         status_command i3status
 }
 
-exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/anime/anime-bg.jpg
+exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
+exec_always --no-startup-id feh --bg-fill $(fd . ~/Pictures/wallpapers/anime | shuf -n 1)
 exec_always --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
