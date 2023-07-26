@@ -8,4 +8,5 @@ alias config-term="go-to-dotfiles terminal/alacritty/alacritty.yml"
 alias config-zsh="go-to-dotfiles shell/zsh/zshrc"
 alias config-env="go-to-dotfiles shell/shared/env"
 alias config-scripts="go-to-dotfiles shell/shared/scripts"
+alias config-polybar="go-to-dotfiles polybar"
 

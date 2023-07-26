@@ -17,7 +17,8 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # go programming language
-export PATH=$HOME/go/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+
 # rust programming language
 . "$HOME/.cargo/env"
 
