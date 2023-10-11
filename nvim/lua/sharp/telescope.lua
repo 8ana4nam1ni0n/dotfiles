@@ -2,7 +2,7 @@ local action_state = require('telescope.actions.state')
 
 require('telescope').setup{
     defaults = {
-        prompt_prefix = "> ",
+        prompt_prefix = " 󰭎 : ",
         color_devicons = true,
     }
 }

@@ -1,5 +1,6 @@
 local Rmap = require("sharp.keymap")
 local nnoremap = Rmap.nnoremap
+local inoremap = Rmap.inoremap
 local lsp = require("lsp-zero")
 
 -- Define on_attach function for lsp keybinds

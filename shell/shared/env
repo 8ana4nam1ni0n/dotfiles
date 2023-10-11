@@ -22,9 +22,12 @@ export PATH=/usr/local/go/bin:$PATH
 # rust programming language
 . "$HOME/.cargo/env"
 
+# haskell programming language ghcup-env
+[ -f "/home/sharp/.ghcup/env" ] && source "/home/sharp/.ghcup/env"
+
 # fzf
 # grabs fzf file for current running shell
-FZF_SHELL_CONFIG=~/.fzf.$( ps --no-header -p $$ | awk '{print $4}')
+FZF_SHELL_CONFIG=~/.fzf.$( ps -p $$ | tail +2 | awk '{print $4}' | tr -d '-' )
 
 # source fzf
 [ -f $FZF_SHELL_CONFIG ] && . $FZF_SHELL_CONFIG || echo "NO FZF CONFIG FOUND"

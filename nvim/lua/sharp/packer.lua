@@ -11,17 +11,11 @@ return require('packer').startup(function(use)
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
-            require("rose-pine").setup()
-            vim.cmd("colorscheme rose-pine")
+            require('rose-pine').setup()
+            vim.cmd('colorscheme rose-pine')
         end
     })
-    -- Telescope
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
-    use ('nvim-telescope/telescope-fzf-native.nvim', { run = 'make' })
-    -- Devicons
-    use 'kyazdani42/nvim-web-devicons'
+    -- Native LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -40,14 +34,36 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},             -- Required
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
-	}
+    }
+
+    -- Telescope
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use ('nvim-telescope/telescope-fzf-native.nvim', { run = 'make' })
+
+    -- Devicons
+    use 'kyazdani42/nvim-web-devicons'
+
     -- Harpoon
     use 'theprimeagen/harpoon'
-    -- Git Fugitive
+
+    -- Git
     use 'tpope/vim-fugitive'
     use 'nvim-lualine/lualine.nvim'
+
+    -- Format
     use 'lukas-reineke/indent-blankline.nvim'
-    -- Comment
     use 'numToStr/Comment.nvim'
+
+    -- Markdown
+    use ({
+        'iamcco/markdown-preview.nvim',
+        run = 'cd app && npm install' ,
+        setup = function()
+            vim.g.mkdp_filetypes = {'markdown'}
+        end,
+        ft = {'markdown'}
+    })
 end)
 

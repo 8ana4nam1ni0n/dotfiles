@@ -3,8 +3,10 @@ local vnoremap = require("sharp.keymap").vnoremap
 local xnoremap = require("sharp.keymap").xnoremap
 local inoremap = require("sharp.keymap").inoremap
 
+-- out of insert mode
 inoremap("<C-c>", "<esc>")
 
+-- Explorer
 nnoremap("<leader>,", vim.cmd.Ex)
 
 -- buffer ops
@@ -20,21 +22,23 @@ nnoremap("<C-s>", ":w<cr>")
 nnoremap("<C-q>", ":q!<cr>")
 nnoremap("<leader>q", ":q<cr>")
 
-
 -- move to window
 nnoremap("<leader>wl", "<C-w>l")
 nnoremap("<leader>wh", "<C-w>h")
 nnoremap("<leader>wk", "<C-w>k")
 nnoremap("<leader>wj", "<C-w>j")
 
--- page up page down centered
+-- fast vertical movement
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 
+-- move lines up and down
 vnoremap("J", ":m '>+1<cr>gv=gv")
 vnoremap("K", ":m '<-2<cr>gv=gv")
 
-nnoremap("<leader>y", "\"+y")
-vnoremap("<leader>y", "\"+y")
-nnoremap("<leader>Y", "\"+y")
+-- copy to clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- easy search and replace globally
+nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")

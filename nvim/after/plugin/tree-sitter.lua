@@ -11,7 +11,8 @@ require'nvim-treesitter.configs'.setup{
         "markdown",
         "javascript",
         "typescript",
-        "bash"
+        "bash",
+        "haskell"
     },
     sync_install = false,
     highlight = {

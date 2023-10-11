@@ -191,7 +191,15 @@ gaps inner 10
 #         status_command i3status
 # }
 
-exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
+# Clipboard Screenshots
+# -- full screen
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+# -- active window
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+# -- screen selection
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png
+
+exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/anime/cat-hoddie.jpg
 exec_always --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
 
