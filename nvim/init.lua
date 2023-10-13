@@ -1,2 +1,3 @@
-require("sharp")
+require('sharp.core')
+require('sharp.lazy')
 
