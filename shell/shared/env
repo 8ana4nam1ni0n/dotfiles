@@ -43,3 +43,8 @@ export FZF_ALT_C_OPTS='--layout=default'
 # For docker rootless mode
 export PATH=/home/sharp/bin:$PATH
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
+# Java Home
+export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
+# Maven
+export PATH=/usr/local/apache-maven-3.9.5/bin:$PATH
