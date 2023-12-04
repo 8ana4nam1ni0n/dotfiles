@@ -18,6 +18,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # go programming language
 export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
 # rust programming language
 . "$HOME/.cargo/env"
@@ -48,3 +49,6 @@ export DOCKER_HOST=unix:///run/user/1000/docker.sock
 export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
 # Maven
 export PATH=/usr/local/apache-maven-3.9.5/bin:$PATH
+
+# Telegram
+export PATH=$HOME/.local/bin:$PATH
