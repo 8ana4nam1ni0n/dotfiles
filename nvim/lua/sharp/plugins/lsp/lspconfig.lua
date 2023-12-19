@@ -57,6 +57,17 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig['yamlls'].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        lspconfig['ansiblels'].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetype = { 'yaml.ansible' }
+        })
+
         lspconfig['lua_ls'].setup({
             capabilities = capabilities,
             on_attach = on_attach,

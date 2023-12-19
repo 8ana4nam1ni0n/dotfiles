@@ -1,6 +1,7 @@
 require('sharp.core.options')
 require('sharp.core.remap')
 require('sharp.core.keymaps')
+require('sharp.core.filetype')
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
