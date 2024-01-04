@@ -2,4 +2,3 @@
 
 # Aliases
 alias vim='nvim'
-alias vim-pack-update='nvim --headless -c "autocmd User PackerComplete quitall" -c PackerSync'
