@@ -23,3 +23,5 @@ ZSH_ALIAS="$CURRENT_DIR/alias.zsh"
 # Prompt
 eval "$(starship init zsh)"
 
+setxkbmap -option "ctrl:nocaps"
+
