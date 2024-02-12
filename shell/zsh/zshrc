@@ -1,5 +1,12 @@
 # !/bin/env zsh
 
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+autoload -U add-zsh-hook
+
+# completions
+complete -C '/usr/local/bin/aws_completer' aws
+
 CURRENT_DIR=$( cd "$( dirname -- ${(%):-%x} )" && pwd )
 ZSHRC="$CURRENT_DIR/.zshrc"
 
@@ -19,6 +26,10 @@ fi
 # Load zsh aliases
 ZSH_ALIAS="$CURRENT_DIR/alias.zsh"
 [ -f $ZSH_ALIAS ] && source $ZSH_ALIAS
+
+# Load zsh hooks
+ZSH_HOOKS="$CURRENT_DIR/hooks.zsh"
+[ -f $ZSH_HOOKS ] && source $ZSH_HOOKS
 
 # Prompt
 eval "$(starship init zsh)"
