@@ -33,6 +33,7 @@ ZSH_HOOKS="$CURRENT_DIR/hooks.zsh"
 
 # Prompt
 eval "$(starship init zsh)"
+eval "$(zellij setup --generate-completion zsh | grep '^functions')"
 
 setxkbmap -option "ctrl:nocaps"
 
