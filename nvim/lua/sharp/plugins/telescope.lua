@@ -41,5 +41,9 @@ return {
                 sorting_strategy = "ascending",
             })
         end, {})
+
+        -- Search git worktree
+        nnoremap("<leader>pw", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", {})
+        nnoremap("<leader>pW", "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", {})
     end,
 }
