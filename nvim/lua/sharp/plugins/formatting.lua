@@ -14,11 +14,11 @@ return {
             format_on_save = {
                 lsp_fallback = true,
                 async = false,
-                tmeout_ms = 500,
+                timeout_ms = 500,
             },
         })
 
-        vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+        vim.keymap.set({"n", "v"}, "<leader>mp", function()
             conform.format({
                 lsp_fallback = true,
                 async = false,
