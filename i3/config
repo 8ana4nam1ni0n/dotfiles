@@ -29,7 +29,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec xautolock -detectsleep -time 1 -locker "betterlockscreen -l dim"
+exec --no-startup-id xautolock -time 60 -locker 'systemctl suspend' -notify 500 -notifier "betterlockscreen -l dim" -corners "----" -cornersize 10
 bindsym $mod+Ctrl+l exec betterlockscreen -l dim
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -184,7 +184,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 default_border pixel 0
-gaps outer 25
+gaps top 25
+gaps left 5
+gaps right 5
+gaps bottom 5
 gaps inner 10
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
