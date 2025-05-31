@@ -20,6 +20,9 @@ fi
 ZSH_ALIAS="$CURRENT_DIR/alias.zsh"
 [ -f $ZSH_ALIAS ] && source $ZSH_ALIAS
 
+# Starts keychain
+eval "$(keychain --eval --agents ssh --quiet)"
+
 # Prompt
 eval "$(starship init zsh)"
 
