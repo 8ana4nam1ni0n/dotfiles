@@ -5,3 +5,5 @@ alias drmid='docker rmi $(docker images --filter="dangling=true" -a -q)'
 # Remove dangling containers
 alias drmcd='docker contianer rm $(docker container ls -a -q)'
 
+alias kubectl='minikube kubectl --'
+

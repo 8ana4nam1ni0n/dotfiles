@@ -5,6 +5,7 @@ DIR=$( cd "$( dirname ${BASH_SOURCE[0]:-${(%):-%x}} )" && pwd )
 ALIAS_DIR="$DIR/alias"
 ENV_FILE="$DIR/env"
 SCRIPT_FILE="$DIR/scripts"
+COMPLETIONS_FILE="$DIR/completions"
 
 if [ -d $ALIAS_DIR ]; then
      for f in `ls $ALIAS_DIR`;
@@ -15,4 +16,5 @@ fi
 
 [ -f $ENV_FILE ] && . $ENV_FILE
 [ -f $SCRIPT_FILE ] && . $SCRIPT_FILE
+[ -f $COMPLETIONS_FILE ] && . $COMPLETIONS_FILE
 

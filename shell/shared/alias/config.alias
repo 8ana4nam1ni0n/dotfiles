@@ -3,6 +3,7 @@
 alias config-nvim="go-to-dotfiles nvim"
 alias config-i3="go-to-dotfiles i3/config"
 alias config-tmux="go-to-dotfiles tmux"
+alias config-zellij="go-to-dotfiles zellij"
 alias config-alias="go-to-dotfiles shell/shared/alias"
 alias config-term="go-to-dotfiles terminal/alacritty/alacritty.yml"
 alias config-zsh="go-to-dotfiles shell/zsh/zshrc"
@@ -10,4 +11,5 @@ alias config-env="go-to-dotfiles shell/shared/env"
 alias config-scripts="go-to-dotfiles shell/shared/scripts"
 alias config-polybar="go-to-dotfiles polybar"
 alias config-lock="go-to-dotfiles betterlockscreen/betterlockscreenrc"
+alias config-completion="go-to-dotfiles shell/shared/completions"
 

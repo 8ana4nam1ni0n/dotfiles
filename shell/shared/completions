@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# detect the shell
+shell=`basename $SHELL`
+
+source_completion() {
+    local tool="${1}"
+
+    if command -v $tool &> /dev/null; then
+        source <($tool completion $shell)
+    else
+        echo "${tool} -- not available"
+    fi
+}
+
+source_completion minikube
+
