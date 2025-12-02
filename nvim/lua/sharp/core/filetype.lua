@@ -12,24 +12,23 @@ local function is_ansible_playbook(path)
     local patterns = {
         "-playbooks$",
         "-playbook$",
-        "-pl$"
+        "-pl$",
     }
     return match_patterns(dirname, patterns)
 end
 
 local ansible_filetype = {
     pattern = {
-        ['.*'] = function(path, bufnr)
+        [".*"] = function(path, bufnr)
             if is_ansible_playbook(path) then
-                return 'yaml.ansible'
+                return "yaml.ansible"
             end
         end,
-        [ '.*/roles/.*/tasks/.*%.yml' ] = "yaml.ansible",
-        [ '.*/roles/.*/handlers/.*%.yml' ] = "yaml.ansible",
-        [ '.*/roles/.*/tasks/.*%.yaml' ] = "yaml.ansible",
-        [ '.*/roles/.*/handlers/.*%.yaml' ] = "yaml.ansible",
-    }
+        [".*/roles/.*/tasks/.*%.yml"] = "yaml.ansible",
+        [".*/roles/.*/handlers/.*%.yml"] = "yaml.ansible",
+        [".*/roles/.*/tasks/.*%.yaml"] = "yaml.ansible",
+        [".*/roles/.*/handlers/.*%.yaml"] = "yaml.ansible",
+    },
 }
 
 vim.filetype.add(ansible_filetype)
-
