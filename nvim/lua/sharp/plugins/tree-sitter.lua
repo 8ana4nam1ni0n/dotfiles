@@ -1,12 +1,12 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
+        "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
-        local treesitter = require('nvim-treesitter.configs')
+        local treesitter = require("nvim-treesitter.configs")
 
         treesitter.setup({
             highlight = {
@@ -15,27 +15,25 @@ return {
             },
             indent = { enable = true },
             ensure_installed = {
-                'lua',
-                'python',
-                'java',
-                'javascript',
-                'typescript',
-                'bash',
-                'markdown',
-                'gitignore',
-                'css',
-                'yaml',
-                'html',
-                'markdown_inline',
-                'go',
-                'rust',
-                'json',
-                'haskell',
-                'cpp',
+                "lua",
+                "python",
+                "java",
+                "javascript",
+                "typescript",
+                "bash",
+                "markdown",
+                "gitignore",
+                "css",
+                "yaml",
+                "html",
+                "markdown",
+                "markdown_inline",
+                "go",
+                "rust",
+                "json",
+                "haskell",
+                "cpp",
             },
         })
     end,
 }
-
-
-

@@ -12,29 +12,5 @@ return {
         vim.lsp.config("*", {
             capabilities = capabilities,
         })
-
-        -- vim.lsp.config("pyright", {
-        --     settings = {
-        --         python = {
-        --             pythonPath = vim.fn.exepath("python3"),
-        --         },
-        --     },
-        -- })
-
-        -- vim.lsp.config("gopls", {
-        --     settings = {
-        --         gopls = {
-        --             analyses = {
-        --                 unusedparams = true,
-        --             },
-        --             staticcheck = true,
-        --             gofumpt = true,
-        --         },
-        --     },
-        -- })
-
-        -- vim.lsp.config("ansiblels", {
-        --     filetype = { "yaml.ansible" },
-        -- })
     end,
 }

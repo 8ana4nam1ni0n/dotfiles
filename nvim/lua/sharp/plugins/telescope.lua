@@ -26,7 +26,10 @@ return {
 
         -- Search string in Project
         nnoremap("<leader>ps", function()
-            builtin.grep_string({ search = vim.fn.input("Grep> ") })
+            builtin.grep_string({
+                search = vim.fn.input("Grep> "),
+                additional_args = { "--ignore-case" },
+            })
         end, {})
 
         -- Search buffers in Project
