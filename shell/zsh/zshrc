@@ -9,7 +9,7 @@ ZSHRC="$CURRENT_DIR/.zshrc"
 # Load Custom System Configuration
 ################################################################################
 SHARED_CONFIG=$CURRENT_DIR/../shared/init
-[ -f "$SHARED_CONFIG" ] && source $SHARED_CONFIG/init
+[ -f "$SHARED_CONFIG" ] && source $SHARED_CONFIG
 
 ################################################################################
 # Load zsh aliases
