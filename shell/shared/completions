@@ -8,8 +8,6 @@ source_completion() {
 
     if command -v $tool &> /dev/null; then
         source <($tool completion $shell)
-    else
-        echo "${tool} -- not available"
     fi
 }
 
