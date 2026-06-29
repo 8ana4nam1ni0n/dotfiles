@@ -16,11 +16,20 @@ return {
             scss = { "prettierd", "prettier" },
             html = { "prettierd", "prettier" },
             markdown = { "prettierd", "prettier" },
-            yaml = { "prettierd", "prettier" },
+            yaml = { "yamlfmt" },
+            yml = { "yamlfmt" },
         },
         format_on_save = {
             timeout_ms = 1000,
             lsp_format = "fallback",
+        },
+        formatters = {
+            yamlfmt = {
+                prepend_args = {
+                    "-formatter",
+                    "type=basic,force_array_style=block",
+                },
+            },
         },
     },
     keys = {

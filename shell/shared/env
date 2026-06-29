@@ -3,52 +3,97 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export TOOL_PATH=$HOME/Tools
 
-# Node Version Manager (NVM)
-export NVM_DIR="$HOME/.config/nvm"
+################################################################################
+# nvm - Node Version Manager
+################################################################################
+[ -d "$XDG_CONFIG_HOME/nvm" ] \
+    && export NVM_DIR="$HOME/.config/nvm" \
+    || [ -d "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Python Version Manager (PyENV)
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-#
-# # Load pyenv-virtualenv
-# eval "$(pyenv virtualenv-init -)"
+################################################################################
+# pyenv - Python Version Manger
+################################################################################
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-# go programming language
-export PATH=/usr/local/go/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
 
-# rust programming language
-. "$HOME/.cargo/env"
-
-# haskell programming language ghcup-env
-# [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
-
+################################################################################
 # fzf
-# grabs fzf file for current running shell
-FZF_SHELL_CONFIG=~/.fzf.$( ps -p $$ | tail +2 | awk '{print $4}' | tr -d '-' )
+################################################################################
+if command -v fzf >/dev/null 2>&1; then
+    FZF_SHELL_CONFIG=~/.fzf.$(basename $SHELL)
 
-# source fzf
-[ -f $FZF_SHELL_CONFIG ] && . $FZF_SHELL_CONFIG || echo "NO FZF CONFIG FOUND"
+    # source fzf
+    [ -f "$FZF_SHELL_CONFIG" ] && . $FZF_SHELL_CONFIG
 
-# define how fzf looks
-export FZF_DEFAULT_COMMAND='fd --type f --hidden'
-export FZF_DEFAULT_OPTS='--layout=default --no-height'
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_CTRL_T_OPTS='--layout=default'
-export FZF_ALT_C_COMMAND='fd --type d --hidden'
-export FZF_ALT_C_OPTS='--layout=default'
+    # define how fzf looks
+    export FZF_DEFAULT_OPTS='--layout=default --no-height'
+    export FZF_CTRL_T_OPTS='--layout=default'
+    export FZF_ALT_C_OPTS='--layout=default'
 
-# For docker rootless mode
-export PATH=$HOME/bin:$PATH
+    if command -v fd >/dev/null 2>&1; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden'
+        export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+        export FZF_ALT_C_COMMAND='fd --type d --hidden'
+    fi
+fi
+
+################################################################################
+# linuxbrew
+################################################################################
+if [ "$(uname)" = "Linux" ]; then
+    [ -x /home/linuxbrew/.linuxbrew/bin/brew ] &&
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    [ -f "$HOME/.local/share/../bin/env" ] &&
+        . "$HOME/.local/share/../bin/env"
+fi
+
+################################################################################
+# Rootless docker
+################################################################################
 # export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
-# Java Home
-export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
-# Maven
-export PATH=/usr/local/apache-maven-3.9.5/bin:$PATH
+################################################################################
+# Java
+################################################################################
+# export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
 
-# Telegram
-# export PATH=$HOME/.local/bin:$PATH
+# Maven
+# export PATH=/usr/local/apache-maven-3.9.5/bin:$PATH
+
+################################################################################
+# Rust
+################################################################################
+. "$HOME/.cargo/env"
+
+################################################################################
+# PATH
+################################################################################
+
+# Adds to path without duplicating entries
+path_add() {
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$PATH:$1" ;;
+    esac
+}
+
+# .local
+path_add "$HOME/.local/bin"
+
+# flatpak
+path_add "$HOME/.local/share/flatpak/exports/bin"
+path_add "/var/lib/flatpak/exports/bin"
+
+# go programming language
+path_add "/usr/local/go/bin"
+path_add "$HOME/go/bin"
+
+# appimages?
+path_add "$HOME/bin"
+
